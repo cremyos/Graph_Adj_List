@@ -26,7 +26,6 @@ int create(ALGraph *G)
 
 	for(i=0;i<G->vexnum;i++)
 	{
-		//G->vertices=(struct VNode *)malloc(sizeof(struct VNode));
 		G->vertices[i].data = 'A'+i;
 		G->vertices[i].firstarc = NULL;
 	}	
@@ -35,17 +34,21 @@ int create(ALGraph *G)
 	for(j=0;j<G->arcnum;j++)
 	{
 		printf("please input the node pair: ");
+
 		scanf("%d %d",&node_pair1,&node_pair2);
 		node_pair1-=1;
 		node_pair2-=1;
+		/*
+  		 *Node pair get match with each other 
+		 *and storage into the adjacency list.
+  	 	 */
 		arc = (ArcNode *)malloc(sizeof(ArcNode));
 		arc->adjvex = node_pair2+'A';
-		printf("node_pair1 =%c **** node_pair1_i = %d\n",node_pair1+'A',node_pair1);
 		arc->nextarc=G->vertices[node_pair1].firstarc;
 		G->vertices[node_pair1].firstarc=arc;
+
 		arc = (ArcNode *)malloc(sizeof(ArcNode));
 		arc->adjvex = node_pair1+'A';
-		printf("node_pair2 = %c **** node_pair2_j = %d\n",node_pair2+'A',node_pair2);
 		arc->nextarc=G->vertices[node_pair2].firstarc;
 		G->vertices[node_pair2].firstarc=arc;
 	}
@@ -58,8 +61,13 @@ int main()
 	ALGraph *G;
 	int i;	
 	
+	i=0;
 	G = (ALGraph *)malloc(sizeof(ALGraph));
 	create(G);
+
+	/* 
+     *print the adjacency list
+     */
 	for(i=0;i<G->vexnum;i++)
 	{
 		printf("%c -> ",'A'+i);
