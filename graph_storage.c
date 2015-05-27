@@ -66,8 +66,8 @@ int main()
 	create(G);
 
 	/* 
-     *print the adjacency list
-     */
+	 *print the adjacency list
+	 */
 	for(i=0;i<G->vexnum;i++)
 	{
 		printf("%c -> ",'A'+i);
