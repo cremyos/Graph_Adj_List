@@ -1,5 +1,5 @@
-//#ifndef __ADJ_LIST_H__
-//#define __ADJ_LIST_H__
+#ifndef __ADJ_LIST_H__
+#define __ADJ_LIST_H__
 
 #define MAX_VERTEX_NUM 20
 
@@ -23,4 +23,4 @@ typedef struct ALGraph
 	int kind;
 }ALGraph;
 
-//#endif /* __ADJ_LIST_H__*/
+#endif /* __ADJ_LIST_H__*/

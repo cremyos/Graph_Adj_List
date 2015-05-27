@@ -9,7 +9,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include "./Adj_list.h"
+#include "Adj_list.h"
 
 int create(ALGraph *G)
 {
@@ -34,21 +34,20 @@ int create(ALGraph *G)
 
 	for(j=0;j<G->arcnum;j++)
 	{
-		//fflush(stdin);
 		printf("please input the node pair: ");
-	//	node_pair1=getchar();
-//		node_pair2=getchar();
 		scanf("%d %d",&node_pair1,&node_pair2);
+		node_pair1-=1;
+		node_pair2-=1;
 		arc = (ArcNode *)malloc(sizeof(ArcNode));
-		arc->adjvex = node_pair1-1+'A';
-		printf("node_pair1 =%c **** node_pair1_i = %d\n",node_pair1-1+'A',node_pair1);
+		arc->adjvex = node_pair2+'A';
+		printf("node_pair1 =%c **** node_pair1_i = %d\n",node_pair1+'A',node_pair1);
 		arc->nextarc=G->vertices[node_pair1].firstarc;
 		G->vertices[node_pair1].firstarc=arc;
 		arc = (ArcNode *)malloc(sizeof(ArcNode));
-		arc->adjvex = node_pair2-1+'A';
-		printf("node_pair2 = %c **** node_pair2_j = %d\n",node_pair2-1+'A',node_pair2);
-		arc->nextarc = G->vertices[node_pair2].firstarc;
-		G->vertices[node_pair2].firstarc;
+		arc->adjvex = node_pair1+'A';
+		printf("node_pair2 = %c **** node_pair2_j = %d\n",node_pair2+'A',node_pair2);
+		arc->nextarc=G->vertices[node_pair2].firstarc;
+		G->vertices[node_pair2].firstarc=arc;
 	}
 	printf("finish the Adjacency List\n");
 	return 0;
